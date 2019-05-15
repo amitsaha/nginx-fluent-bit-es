@@ -1,0 +1,16 @@
+[Unit]
+Description=Demo docker container
+Requires=network-online.target
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+LimitNOFILE=infinity
+ExecStart=/bin/docker run --rm amitsaha/python-json-logger-demo
+SuccessExitStatus=143
+KillMode=mixed
+RestartSec=10
+Restart=always
+TimeoutSec=60
+
