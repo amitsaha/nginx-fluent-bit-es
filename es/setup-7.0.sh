@@ -8,8 +8,7 @@ curl  -X PUT "localhost:9200/_ingest/pipeline/geoip" -H 'Content-Type: applicati
   "processors" : [
     {
       "geoip" : {
-        "field" : "real_ip",
-        "target_field": "foo"
+        "field" : "real_ip"
       }
     }
   ]

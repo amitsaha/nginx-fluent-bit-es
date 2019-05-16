@@ -5,16 +5,7 @@ curl -H 'Content-Type: application/json'  -XPUT "http://elasticsearch:9200/nginx
       "@timestamp": {
         "type": "date"
       },
-      "body_bytes_sent": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "foo": {
+      "geoip": {
         "properties": {
           "continent_name": {
             "type": "text",
@@ -39,24 +30,6 @@ curl -H 'Content-Type: application/json'  -XPUT "http://elasticsearch:9200/nginx
           }
         }
       },
-      "http_referrer": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "http_user_agent": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
       "real_ip": {
         "type": "text",
         "fields": {
@@ -65,71 +38,8 @@ curl -H 'Content-Type: application/json'  -XPUT "http://elasticsearch:9200/nginx
             "ignore_above": 256
           }
         }
-      },
-      "remote_addr": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "remote_user": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "request": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "request_method": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "request_time": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "response_status": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
-      },
-      "time_local": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
       }
-    }
   }
+}
 }
 '
