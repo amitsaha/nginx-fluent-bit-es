@@ -1,0 +1,25 @@
+[SERVICE]
+    Flush        1
+    Log_Level    info
+
+[INPUT]
+    Name            systemd
+    Tag             host.*
+    Systemd_Filter  _SYSTEMD_UNIT=auditd.service _SYSTEMD_UNIT=polkit.service
+    # Parser systemd-unstructured
+
+[OUTPUT]
+    Name stdout
+    Match  *
+    Format json_lines
+
+[FILTER]
+    Name       record_modifier
+    Match      *
+    Remove_Key __CURSOR
+    Remove_Key __REALTIME_TIMESTAMP
+    Remove_Key __MONOTONIC_TIMESTAMP 
+    Remove_Key _BOOT_ID
+    Remove_Key _MACHINE_ID
+    Remove_Key PRIORITY
+    # add any other Remove_Key that you need
