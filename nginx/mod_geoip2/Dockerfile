@@ -13,6 +13,6 @@ WORKDIR /etc
 RUN wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz && \
     wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz && \
     gzip -d GeoLite2-City.mmdb.gz && \
-    gzip -d GeoLite2-Country.mmdb.gz && \
+    gzip -d GeoLite2-Country.mmdb.gz
 
 ENTRYPOINT ["nginx"]

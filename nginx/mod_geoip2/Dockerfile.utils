@@ -1,0 +1,19 @@
+FROM centos:7
+RUN yum clean all && \
+    yum update -y && \
+    yum install epel-release -y
+RUN yum install wget gcc make -y
+
+WORKDIR /etc
+RUN wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz && \
+    wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz && \
+    gzip -d GeoLite2-City.mmdb.gz && \
+    gzip -d GeoLite2-Country.mmdb.gz
+
+WORKDIR /tmp
+RUN wget https://github.com/maxmind/libmaxminddb/releases/download/1.3.2/libmaxminddb-1.3.2.tar.gz && \
+    tar -zxvf libmaxminddb-1.3.2.tar.gz && \
+    cd libmaxminddb-1.3.2 && \
+    ./configure && make && make install && cd bin/ && make install
+
+ENTRYPOINT ["mmdblookup"]
